@@ -1,7 +1,7 @@
 module.exports = {
     siteMetadata: {
-        title: 'insta',
-        description: "this project is designed as a exercise to help me accustomed to using grid for layout design.",
+        title: 'animation-test',
+        description: "anime test",
         siteUrl: "https://www.grid-practice02.com",
         author: "chiba",
         lang: "ja",
