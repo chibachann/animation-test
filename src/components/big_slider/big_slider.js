@@ -11,6 +11,7 @@ const BigSlider = () => {
                 edges {
                     node {
                         relativePath
+                        absolutePath
                         childImageSharp {
                             gatsbyImageData(
                                 width: 800
