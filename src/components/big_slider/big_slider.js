@@ -23,9 +23,13 @@ const BigSlider = () => {
             }
         }
     `);
+    
 
     // 画像の配列を作成
     const images = data.allFile.edges.map(edge => getImage(edge.node.childImageSharp));
+
+    console.log('GraphQLデータ:', data);
+    console.log('画像配列:', images);
     
     const initialIndex = images.length - 1;
     const [startIndex, setStartIndex] = useState(initialIndex);
@@ -90,6 +94,8 @@ const BigSlider = () => {
                         image={image}
                         alt={`Slide ${index}`}
                         className={styles.sliderImage}
+                        loading="eager"  
+                        objectFit="cover"
                     />
                 </div>
             ))}
