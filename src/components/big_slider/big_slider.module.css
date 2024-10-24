@@ -1,17 +1,17 @@
 .slider {
-    display: flex;
-    justify-content: center;
+    display: grid;
+    justify-items: center;
+    grid-auto-flow: column;
     align-items: center;
-    gap: 20px;
     background-color: #f5f5f5;
-    min-height: 200px;
+    min-height: 250px;
     width: 100%;
     overflow-x: hidden;
 }
 
 .colorBox {
-    width: 25vw;
-    height: 25vw;
+    width: calc(100vw  / 3);
+    height: 200px;
     border-radius: 10px;
     transition: all 0.3s ease;
     background-image: -webkit-linear-gradient(45deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.3) 100%);
@@ -21,20 +21,8 @@
 
 /* ホバー効果を追加（オプション） */
 .colorBox:hover {
-    transform: scale(1.1);
-    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
-}
-
-.colorBox.active {
     transform: scale(1.2);
-    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1;
 }
 
-@media screen and (min-width: 768px) {
-
-    .colorBox {
-        width: 100px;
-        height: 100px;
-    }
-    
-}
