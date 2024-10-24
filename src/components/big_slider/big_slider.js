@@ -1,35 +1,54 @@
 import React, { useEffect, useState } from "react";
+import { graphql, useStaticQuery } from "gatsby";
+import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import * as styles from "./big_slider.module.css";
 
 const BigSlider = () => {
-    const colors = [
-        "#D63031", "#00B894", "#0984E3", "#38A169", "#F1C40F",
-        "#6B48FF", "#E17055", "#0097E6", "#27AE60", "#E67E22"
-    ];
-    
-    const initialIndex = colors.length - 1;
-    const [startIndex, setStartIndex] = useState(initialIndex);
-    const [isActive, setIsActive] = useState(true); // コンポーネントのアクティブ状態を管理
+    // GraphQLでimages配下の画像を取得
+    const data = useStaticQuery(graphql`
+        query {
+            allFile(filter: { sourceInstanceName: { eq: "images" } }) {
+                edges {
+                    node {
+                        relativePath
+                        childImageSharp {
+                            gatsbyImageData(
+                                width: 800
+                                quality: 90
+                                formats: [AUTO, WEBP]
+                            )
+                        }
+                    }
+                }
+            }
+        }
+    `);
 
-    const getVisibleColors = (currentIndex) => {
+    // 画像の配列を作成
+    const images = data.allFile.edges.map(edge => getImage(edge.node.childImageSharp));
+    
+    const initialIndex = images.length - 1;
+    const [startIndex, setStartIndex] = useState(initialIndex);
+    const [isActive, setIsActive] = useState(true);
+
+    const getVisibleImages = (currentIndex) => {
         return [
-            colors[(currentIndex - 1 + colors.length) % colors.length],
-            colors[currentIndex],
-            colors[(currentIndex + 1) % colors.length]
+            images[(currentIndex - 1 + images.length) % images.length],
+            images[currentIndex],
+            images[(currentIndex + 1) % images.length]
         ];
     };
 
-    const [visibleColors, setVisibleColors] = useState(getVisibleColors(initialIndex));
+    const [visibleImages, setVisibleImages] = useState(getVisibleImages(initialIndex));
 
     useEffect(() => {
         let timer;
 
-        // ページがアクティブな時だけタイマーを動かす
         if (isActive) {
             timer = setInterval(() => {
                 setStartIndex((prevIndex) => {
-                    const newIndex = (prevIndex + 1) % colors.length;
-                    setVisibleColors(getVisibleColors(newIndex));
+                    const newIndex = (prevIndex + 1) % images.length;
+                    setVisibleImages(getVisibleImages(newIndex));
                     return newIndex;
                 });
             }, 2000);
@@ -40,24 +59,20 @@ const BigSlider = () => {
                 clearInterval(timer);
             }
         };
-    }, [isActive]); // isActiveの変更を監視
+    }, [isActive]);
 
-    // ページの表示/非表示状態を監視
     useEffect(() => {
         const handleVisibilityChange = () => {
             setIsActive(!document.hidden);
         };
 
-        // ページの表示/非表示イベントリスナーを設定
         document.addEventListener('visibilitychange', handleVisibilityChange);
 
-        // クリーンアップ関数
         return () => {
             document.removeEventListener('visibilitychange', handleVisibilityChange);
         };
     }, []);
 
-    // メモリリーク防止のためアンマウント時にクリーンアップ
     useEffect(() => {
         return () => {
             setIsActive(false);
@@ -66,12 +81,17 @@ const BigSlider = () => {
 
     return (
         <div className={styles.slider}>
-            {visibleColors.map((color, index) => (
+            {visibleImages.map((image, index) => (
                 <div
                     key={index}
                     className={`${styles.colorBox} ${index === 1 ? styles.active : ''}`}
-                    style={{ backgroundColor: color }}
-                />
+                >
+                    <GatsbyImage
+                        image={image}
+                        alt={`Slide ${index}`}
+                        className={styles.sliderImage}
+                    />
+                </div>
             ))}
         </div>
     );
