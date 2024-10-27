@@ -1,5 +1,41 @@
 .page01 {
     display: grid;
+    grid-auto-rows: min-content;
     width: 100%;
-    row-gap: 1rem;
+    height: 200vh;
+    background: linear-gradient(to bottom, #ff0000, #0000ff);
+    padding-top: 10vh;
 }
+
+.page01 h1 {
+    margin-left: 20px;
+    font-size: 2rem;
+    color: white;
+    font-family: var(--font-family-gothic);
+}
+
+.ContentsContainer {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-gap: 20px;
+    place-items: center;
+    margin: 20px;
+}
+
+.Content {
+    display: grid;
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    width: 90%;
+    height: 90%;
+    font-family: var(--font-family-gothic);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.Content:hover {
+    transform: scale(1.02);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
