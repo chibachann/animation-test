@@ -2,6 +2,7 @@
     display: grid;
     grid-auto-rows: min-content;
     width: 100%;
+    min-height: 100vh;
     background: repeating-linear-gradient(
         to bottom,
         #ff0000 0vh,
@@ -41,4 +42,11 @@
     height: 100%;
     object-fit: cover;
     border-radius: 20px;
+}
+
+@media screen and (min-width: 768px) {
+    .ContentsContainer {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    
 }
