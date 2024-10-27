@@ -33,6 +33,7 @@ const ShowPictureComponent = () => {
                         src="../../images/01.jpg"
                         alt="01"
                         aspectRatio={5/7}
+                        loading="eager"
                     />
                 </div>
                 <div className={styles.Content}>
@@ -91,6 +92,9 @@ const ShowPictureComponent = () => {
                 </div>
                 <div className={styles.Content}>
                     <img src="/images/04.jpg" alt="04" />
+                </div>
+                <div className={styles.Content}>
+                    <img src={data.allFile.edges[0].node.childImageSharp.gatsbyImageData.images.fallback.src} alt="01" />
                 </div>
             </dic>
         </div>
