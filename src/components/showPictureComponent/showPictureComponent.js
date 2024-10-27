@@ -56,9 +56,6 @@ const ShowPictureComponent = () => {
                         aspectRatio={5/7}
                     />
                 </div>
-            </dic>
-
-            <div className={styles.ContentsContainer}>
                 <div className={styles.Content}>
                     <GatsbyImage
                         image={data.allFile.edges[0].node.childImageSharp.gatsbyImageData}
@@ -83,7 +80,19 @@ const ShowPictureComponent = () => {
                         alt="04"
                     />
                 </div>
-            </div>
+                <div className={styles.Content}>
+                    <img src="/images/01.jpg" alt="01" />
+                </div>
+                <div className={styles.Content}>
+                    <img src="/images/02.jpg" alt="02" />
+                </div>
+                <div className={styles.Content}>
+                    <img src="/images/03.jpg" alt="03" />
+                </div>
+                <div className={styles.Content}>
+                    <img src="/images/04.jpg" alt="04" />
+                </div>
+            </dic>
         </div>
     );
 
