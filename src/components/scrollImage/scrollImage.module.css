@@ -1,0 +1,45 @@
+.scrollImage {
+    display: grid;
+    grid-auto-rows: min-content;
+    width: 100%;
+    min-height: 100vh;
+    background: repeating-linear-gradient(
+        to bottom,
+        #ff0000 0vh,
+        #0000ff 100vh,
+        #ff0000 200vh
+    );
+    font-family: var(--font-family-gothic);
+    color: white;
+}
+
+.whiteWall {
+    height: 100vh;
+    background-color: white;
+    width: 100%;
+}
+
+.imageContainer {
+    height: 150vh;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+.imageWrapper {
+    height: 100%;
+    width: 100%;
+    position: relative;
+}
+
+.backimage {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    transform-origin: center center;
+    will-change: transform; 
+    transition: transform 0.1s linear; 
+    position: absolute;
+    top: 0;
+    left: 0;
+}

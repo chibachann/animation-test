@@ -1,0 +1,38 @@
+.autoScrollSection {
+    display: grid;
+    grid-auto-rows: min-content;
+    width: 100%;
+    min-height: 100vh;
+    background: repeating-linear-gradient(
+        to bottom,
+        #ff0000 0vh,
+        #0000ff 100vh,
+        #ff0000 200vh
+    );
+    font-family: var(--font-family-gothic);
+    color: white;
+}
+
+.whiteWall {
+    height: 100vh;
+    background-color: white;
+    width: 100%;
+    
+}
+
+.box {
+    height: 150vh;
+    background: repeating-linear-gradient(
+        to bottom,
+        #ff0000 0vh,
+        #0000ff 100vh,
+        #ff0000 200vh
+    );
+    width: 100%;
+}
+
+.box2 {
+    height: 100vh;
+    background-color: rgb(0, 0, 200, 0.5);
+    width: 100%;
+}

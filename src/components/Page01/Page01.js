@@ -19,6 +19,16 @@ const Page01 = () => {
                         <h2>Swiper</h2>
                     </Link>
                 </div>
+                <div className={styles.Content}>
+                    <Link to="/lab/autoScroll">
+                        <h2>Auto Scroll</h2>
+                    </Link>
+                </div>
+                <div className={styles.Content}>
+                    <Link to="/lab/scrollImagePage">
+                        <h2>Scroll Image</h2>
+                    </Link>
+                </div>
             </div>
         </div>
     );
