@@ -1,4 +1,4 @@
-.ManyAnimation {
+.TextAnimation {
     display: grid;
     grid-auto-rows: min-content;
     width: 100%;
@@ -15,5 +15,3 @@
     overflow-x: hidden;
     overflow-y: hidden;
 }
-
-

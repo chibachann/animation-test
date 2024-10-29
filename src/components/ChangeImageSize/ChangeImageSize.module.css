@@ -1,4 +1,4 @@
-.ManyAnimation {
+.ChangeImageSize {
     display: grid;
     grid-auto-rows: min-content;
     width: 100%;
@@ -16,4 +16,8 @@
     overflow-y: hidden;
 }
 
-
+.ChangeImageSize h1 {
+    font-size: 2rem;
+    margin: 1rem;
+    color: white;
+}
