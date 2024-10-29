@@ -1,0 +1,659 @@
+/* AnimationBox.module.css */
+
+.AnimationSet {
+    display: grid;
+    grid-auto-rows: min-content;
+    
+}
+
+.Title {
+    font-size: 2rem;
+    margin: 1rem;
+    color: white;
+}
+
+.ResetButton {
+    justify-self: center;
+    margin: 1rem;
+    padding: 8px 16px;
+    width: 10rem;
+    font-size: 1rem;
+    font-weight: 600;
+    background-color: white;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.ResetButton:hover {
+    background-color: #94ddf8;
+}
+
+.Container {
+    display: grid;
+    justify-self: center;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-auto-rows: 20vh;
+    padding: 0 10px;
+    width: calc(100% - 20px);
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.Box {
+    height: 100%;
+    width: 100%;
+    background-color: white;
+    border-radius: 16px;
+}
+
+/* フェードイン */
+.fadeIn .Box {
+    animation: fadeIn 1s ease-out forwards;
+    opacity: 0;
+}
+
+/* スライドイン */
+.slideIn .Box {
+    animation: slideIn 1s ease-out forwards;
+    transform: translateX(-100%);
+}
+
+/* ポップアップ */
+.popUp .Box {
+    animation: popUp 0.5s ease-out forwards;
+    transform: scale(0);
+}
+
+/* カスケード (連続して表示) */
+.cascade .Box {
+    opacity: 0;
+    animation: fadeIn 0.5s ease-out forwards;
+}
+
+.cascade .Box:nth-child(1) { animation-delay: 0s; }
+.cascade .Box:nth-child(2) { animation-delay: 0.2s; }
+.cascade .Box:nth-child(3) { animation-delay: 0.4s; }
+.cascade .Box:nth-child(4) { animation-delay: 0.6s; }
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideIn {
+    from { transform: translateX(-100%); }
+    to { transform: translateX(0); }
+}
+
+@keyframes popUp {
+    0% { transform: scale(0); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+}
+
+/* スライドフェード */
+.slideFade .Box {
+    animation: slideFade 1s ease-out forwards;
+    opacity: 0;
+    transform: translateX(-100%);
+}
+
+/* カスケードジャンプ */
+.cascadeJump .Box {
+    opacity: 0;
+    animation: jumpIn 0.5s ease-out forwards;
+}
+
+.cascadeJump .Box:nth-child(1) { animation-delay: 0s; }
+.cascadeJump .Box:nth-child(2) { animation-delay: 0.2s; }
+.cascadeJump .Box:nth-child(3) { animation-delay: 0.4s; }
+.cascadeJump .Box:nth-child(4) { animation-delay: 0.6s; }
+
+/* 回転フェード */
+.rotateIn .Box {
+    animation: rotateIn 0.8s ease-out forwards;
+    opacity: 0;
+    transform: rotate(-180deg) scale(0);
+}
+
+/* バウンス */
+.bounce .Box {
+    animation: bounce 0.8s cubic-bezier(0.36, 0, 0.66, -0.56) forwards;
+    transform: translateY(100vh);
+}
+
+/* ジグザグ */
+.zigzag .Box {
+    animation: zigzag 1s ease-out forwards;
+    opacity: 0;
+}
+
+.zigzag .Box:nth-child(even) { animation-name: zigzagEven; }
+.zigzag .Box:nth-child(odd) { animation-name: zigzagOdd; }
+
+/* 新しいキーフレーム定義 */
+@keyframes slideFade {
+    0% { 
+        opacity: 0;
+        transform: translateX(-100%);
+    }
+    100% { 
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes jumpIn {
+    0% { 
+        opacity: 0;
+        transform: translateY(100px);
+    }
+    100% { 
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes rotateIn {
+    0% {
+        opacity: 0;
+        transform: rotate(-180deg) scale(0);
+    }
+    100% {
+        opacity: 1;
+        transform: rotate(0) scale(1);
+    }
+}
+
+@keyframes bounce {
+    0% { transform: translateY(100vh); }
+    60% { transform: translateY(-20px); }
+    80% { transform: translateY(10px); }
+    100% { transform: translateY(0); }
+}
+
+@keyframes zigzagOdd {
+    0% {
+        opacity: 0;
+        transform: translate(-100px, -50px);
+    }
+    100% {
+        opacity: 1;
+        transform: translate(0, 0);
+    }
+}
+
+@keyframes zigzagEven {
+    0% {
+        opacity: 0;
+        transform: translate(100px, -50px);
+    }
+    100% {
+        opacity: 1;
+        transform: translate(0, 0);
+    }
+}
+
+/* 順番にスライドイン（右から） */
+.sequentialSlide .Box {
+    opacity: 0;
+    animation: slideInRight 0.7s ease-out forwards;
+}
+
+.sequentialSlide .Box:nth-child(1) { animation-delay: 0.6s; }
+.sequentialSlide .Box:nth-child(2) { animation-delay: 0.4s; }
+.sequentialSlide .Box:nth-child(3) { animation-delay: 0.2s; }
+.sequentialSlide .Box:nth-child(4) { animation-delay: 0s; }
+
+/* 斜め上からスライドイン */
+.diagonalSlide .Box {
+    opacity: 0;
+    animation: diagonalSlide 0.8s ease-out forwards;
+}
+
+.diagonalSlide .Box:nth-child(1) { animation-delay: 0s; }
+.diagonalSlide .Box:nth-child(2) { animation-delay: 0.2s; }
+.diagonalSlide .Box:nth-child(3) { animation-delay: 0.4s; }
+.diagonalSlide .Box:nth-child(4) { animation-delay: 0.6s; }
+
+/* 斜め上から散らばって集まる */
+.diagonalScatter .Box {
+    opacity: 0;
+    animation: diagonalScatter 1s ease-out forwards;
+}
+
+.diagonalScatter .Box:nth-child(1) { 
+    animation-delay: 0s;
+    transform: translate(-100px, -100px);
+}
+.diagonalScatter .Box:nth-child(2) { 
+    animation-delay: 0.2s;
+    transform: translate(-50px, -150px);
+}
+.diagonalScatter .Box:nth-child(3) { 
+    animation-delay: 0.4s;
+    transform: translate(50px, -150px);
+}
+.diagonalScatter .Box:nth-child(4) { 
+    animation-delay: 0.6s;
+    transform: translate(100px, -100px);
+}
+
+@keyframes slideInRight {
+    0% {
+        opacity: 0;
+        transform: translateX(100%);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes diagonalSlide {
+    0% {
+        opacity: 0;
+        transform: translate(-100px, -100px);
+    }
+    100% {
+        opacity: 1;
+        transform: translate(0, 0);
+    }
+}
+
+@keyframes diagonalScatter {
+    0% {
+        opacity: 0;
+    }
+    60% {
+        opacity: 0.6;
+    }
+    100% {
+        opacity: 1;
+        transform: translate(0, 0);
+    }
+}
+
+/* 順番にスライドイン（左から） */
+.sequentialSlideLeft .Box {
+    opacity: 0;
+    animation: slideInLeft 0.7s ease-out forwards;
+ }
+ 
+ .sequentialSlideLeft .Box:nth-child(1) { animation-delay: 0s; }
+ .sequentialSlideLeft .Box:nth-child(2) { animation-delay: 0.2s; }
+ .sequentialSlideLeft .Box:nth-child(3) { animation-delay: 0.4s; }
+ .sequentialSlideLeft .Box:nth-child(4) { animation-delay: 0.6s; }
+ 
+ /* 波打つアニメーション */
+ .wave .Box {
+    animation: wave 1s ease-out forwards;
+    transform-origin: center bottom;
+ }
+ 
+ .wave .Box:nth-child(1) { animation-delay: 0s; }
+ .wave .Box:nth-child(2) { animation-delay: 0.2s; }
+ .wave .Box:nth-child(3) { animation-delay: 0.4s; }
+ .wave .Box:nth-child(4) { animation-delay: 0.6s; }
+ 
+ /* 3D フリップ */
+ .flip3D .Box {
+    animation: flip3D 1s ease-out forwards;
+    transform-style: preserve-3d;
+    perspective: 1000px;
+    opacity: 0;
+ }
+ 
+ .flip3D .Box:nth-child(1) { animation-delay: 0s; }
+ .flip3D .Box:nth-child(2) { animation-delay: 0.2s; }
+ .flip3D .Box:nth-child(3) { animation-delay: 0.4s; }
+ .flip3D .Box:nth-child(4) { animation-delay: 0.6s; }
+ 
+ /* 3D 回転立方体 */
+ .cube3D .Box {
+    animation: cube3D 1.2s ease-out forwards;
+    transform-style: preserve-3d;
+    perspective: 1000px;
+    opacity: 0;
+ }
+ 
+ .cube3D .Box:nth-child(1) { animation-delay: 0s; }
+ .cube3D .Box:nth-child(2) { animation-delay: 0.2s; }
+ .cube3D .Box:nth-child(3) { animation-delay: 0.4s; }
+ .cube3D .Box:nth-child(4) { animation-delay: 0.6s; }
+ 
+ /* らせん状に回転 */
+ .spiral .Box {
+    animation: spiral 1s ease-out forwards;
+    opacity: 0;
+ }
+ 
+ .spiral .Box:nth-child(1) { animation-delay: 0s; }
+ .spiral .Box:nth-child(2) { animation-delay: 0.2s; }
+ .spiral .Box:nth-child(3) { animation-delay: 0.4s; }
+ .spiral .Box:nth-child(4) { animation-delay: 0.6s; }
+ 
+ /* アコーディオン */
+ .accordion .Box {
+    animation: accordion 0.8s ease-out forwards;
+    transform-origin: center top;
+    opacity: 0;
+ }
+ 
+ .accordion .Box:nth-child(1) { animation-delay: 0s; }
+ .accordion .Box:nth-child(2) { animation-delay: 0.2s; }
+ .accordion .Box:nth-child(3) { animation-delay: 0.4s; }
+ .accordion .Box:nth-child(4) { animation-delay: 0.6s; }
+ 
+ @keyframes slideInLeft {
+    0% {
+        opacity: 0;
+        transform: translateX(-100%);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+ }
+ 
+ @keyframes wave {
+    0% {
+        transform: scale(1, 0.3) translateY(100%);
+    }
+    40% {
+        transform: scale(1, 1.2) translateY(-20%);
+    }
+    70% {
+        transform: scale(1, 0.8) translateY(10%);
+    }
+    100% {
+        transform: scale(1, 1) translateY(0);
+    }
+ }
+ 
+ @keyframes flip3D {
+    0% {
+        opacity: 0;
+        transform: perspective(1000px) rotateY(90deg);
+    }
+    50% {
+        transform: perspective(1000px) rotateY(-20deg);
+    }
+    100% {
+        opacity: 1;
+        transform: perspective(1000px) rotateY(0deg);
+    }
+ }
+ 
+ @keyframes cube3D {
+    0% {
+        opacity: 0;
+        transform: perspective(1000px) rotateX(-90deg) rotateY(-90deg);
+    }
+    50% {
+        opacity: 0.5;
+        transform: perspective(1000px) rotateX(20deg) rotateY(20deg);
+    }
+    100% {
+        opacity: 1;
+        transform: perspective(1000px) rotateX(0deg) rotateY(0deg);
+    }
+ }
+ 
+ @keyframes spiral {
+    0% {
+        opacity: 0;
+        transform: rotate(-540deg) scale(0);
+    }
+    50% {
+        opacity: 0.5;
+        transform: rotate(-270deg) scale(1.2);
+    }
+    100% {
+        opacity: 1;
+        transform: rotate(0deg) scale(1);
+    }
+ }
+ 
+ @keyframes accordion {
+    0% {
+        opacity: 0;
+        transform: scaleY(0);
+    }
+    60% {
+        opacity: 0.8;
+        transform: scaleY(1.2);
+    }
+    100% {
+        opacity: 1;
+        transform: scaleY(1);
+    }
+ }
+
+ .Container[class*="3D"] {
+    perspective: 1000px;
+    perspective-origin: center center;
+}
+
+/* 3D カード回転 */
+.cardFlip3D .Box {
+    animation: cardFlip3D 1.2s ease-out forwards;
+    transform-style: preserve-3d;
+    backface-visibility: visible;
+    opacity: 0;
+}
+
+.cardFlip3D .Box:nth-child(1) { animation-delay: 0s; }
+.cardFlip3D .Box:nth-child(2) { animation-delay: 0.2s; }
+.cardFlip3D .Box:nth-child(3) { animation-delay: 0.4s; }
+.cardFlip3D .Box:nth-child(4) { animation-delay: 0.6s; }
+
+/* 3D ヘリカル回転 */
+.helical3D .Box {
+    animation: helical3D 1.5s ease-out forwards;
+    transform-style: preserve-3d;
+    opacity: 0;
+}
+
+.helical3D .Box:nth-child(1) { animation-delay: 0s; }
+.helical3D .Box:nth-child(2) { animation-delay: 0.3s; }
+.helical3D .Box:nth-child(3) { animation-delay: 0.6s; }
+.helical3D .Box:nth-child(4) { animation-delay: 0.9s; }
+
+/* 3D フォールド展開 */
+.fold3D .Box {
+    animation: fold3D 1.4s ease-out forwards;
+    transform-style: preserve-3d;
+    transform-origin: left center;
+    opacity: 0;
+}
+
+.fold3D .Box:nth-child(1) { animation-delay: 0s; }
+.fold3D .Box:nth-child(2) { animation-delay: 0.3s; }
+.fold3D .Box:nth-child(3) { animation-delay: 0.6s; }
+.fold3D .Box:nth-child(4) { animation-delay: 0.9s; }
+
+/* 3D カルーセル */
+.carousel3D .Box {
+    animation: carousel3D 1.6s ease-out forwards;
+    transform-style: preserve-3d;
+    opacity: 0;
+}
+
+.carousel3D .Box:nth-child(1) { 
+    animation-delay: 0s;
+    transform-origin: center left;
+}
+.carousel3D .Box:nth-child(2) { 
+    animation-delay: 0.4s;
+    transform-origin: center center;
+}
+.carousel3D .Box:nth-child(3) { 
+    animation-delay: 0.8s;
+    transform-origin: center right;
+}
+.carousel3D .Box:nth-child(4) { 
+    animation-delay: 1.2s;
+    transform-origin: center center;
+}
+
+/* 3D ドミノ */
+.domino3D .Box {
+    animation: domino3D 1.3s ease-out forwards;
+    transform-style: preserve-3d;
+    transform-origin: bottom center;
+    opacity: 0;
+}
+
+.domino3D .Box:nth-child(1) { animation-delay: 0s; }
+.domino3D .Box:nth-child(2) { animation-delay: 0.3s; }
+.domino3D .Box:nth-child(3) { animation-delay: 0.6s; }
+.domino3D .Box:nth-child(4) { animation-delay: 0.9s; }
+
+@keyframes cardFlip3D {
+    0% {
+        opacity: 0;
+        transform: perspective(1000px) rotateY(180deg) rotateX(180deg) scale(0.5);
+    }
+    50% {
+        opacity: 0.7;
+        transform: perspective(1000px) rotateY(-20deg) rotateX(-20deg) scale(1.2);
+    }
+    100% {
+        opacity: 1;
+        transform: perspective(1000px) rotateY(0deg) rotateX(0deg) scale(1);
+    }
+}
+
+@keyframes helical3D {
+    0% {
+        opacity: 0;
+        transform: perspective(1000px) rotateX(720deg) rotateY(360deg) translateZ(-300px);
+    }
+    50% {
+        opacity: 0.5;
+        transform: perspective(1000px) rotateX(360deg) rotateY(180deg) translateZ(-150px);
+    }
+    100% {
+        opacity: 1;
+        transform: perspective(1000px) rotateX(0deg) rotateY(0deg) translateZ(0);
+    }
+}
+
+@keyframes fold3D {
+    0% {
+        opacity: 0;
+        transform: perspective(1000px) rotateY(-90deg) translateX(-100%);
+    }
+    50% {
+        opacity: 0.5;
+        transform: perspective(1000px) rotateY(-30deg) translateX(-30%);
+    }
+    100% {
+        opacity: 1;
+        transform: perspective(1000px) rotateY(0deg) translateX(0);
+    }
+}
+
+@keyframes carousel3D {
+    0% {
+        opacity: 0;
+        transform: perspective(1000px) rotateY(-180deg) translateZ(-200px);
+    }
+    40% {
+        opacity: 0.4;
+        transform: perspective(1000px) rotateY(-90deg) translateZ(-100px);
+    }
+    70% {
+        opacity: 0.7;
+        transform: perspective(1000px) rotateY(-45deg) translateZ(-50px);
+    }
+    100% {
+        opacity: 1;
+        transform: perspective(1000px) rotateY(0deg) translateZ(0);
+    }
+}
+
+@keyframes domino3D {
+    0% {
+        opacity: 0;
+        transform: perspective(1000px) rotateX(90deg) translateY(100%);
+    }
+    40% {
+        opacity: 0.4;
+        transform: perspective(1000px) rotateX(60deg) translateY(50%);
+    }
+    70% {
+        opacity: 0.7;
+        transform: perspective(1000px) rotateX(-20deg) translateY(-10%);
+    }
+    100% {
+        opacity: 1;
+        transform: perspective(1000px) rotateX(0deg) translateY(0);
+    }
+}
+
+/* さらに高度な3Dアニメーション */
+.rubiksCube3D .Box {
+    animation: rubiksCube3D 2s ease-out forwards;
+    transform-style: preserve-3d;
+    opacity: 0;
+}
+
+.rubiksCube3D .Box:nth-child(1) { 
+    animation-delay: 0s;
+    transform-origin: top left;
+}
+.rubiksCube3D .Box:nth-child(2) { 
+    animation-delay: 0.4s;
+    transform-origin: top right;
+}
+.rubiksCube3D .Box:nth-child(3) { 
+    animation-delay: 0.8s;
+    transform-origin: bottom left;
+}
+.rubiksCube3D .Box:nth-child(4) { 
+    animation-delay: 1.2s;
+    transform-origin: bottom right;
+}
+
+@keyframes rubiksCube3D {
+    0% {
+        opacity: 0;
+        transform: 
+            perspective(1000px) 
+            rotateX(180deg) 
+            rotateY(180deg) 
+            rotateZ(180deg) 
+            scale3d(0.5, 0.5, 0.5);
+    }
+    30% {
+        opacity: 0.3;
+        transform: 
+            perspective(1000px) 
+            rotateX(120deg) 
+            rotateY(120deg) 
+            rotateZ(120deg) 
+            scale3d(0.7, 0.7, 0.7);
+    }
+    60% {
+        opacity: 0.6;
+        transform: 
+            perspective(1000px) 
+            rotateX(60deg) 
+            rotateY(60deg) 
+            rotateZ(60deg) 
+            scale3d(1.1, 1.1, 1.1);
+    }
+    100% {
+        opacity: 1;
+        transform: 
+            perspective(1000px) 
+            rotateX(0deg) 
+            rotateY(0deg) 
+            rotateZ(0deg) 
+            scale3d(1, 1, 1);
+    }
+}

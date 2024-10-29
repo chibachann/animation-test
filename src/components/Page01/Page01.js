@@ -29,6 +29,16 @@ const Page01 = () => {
                         <h2>Scroll Image</h2>
                     </Link>
                 </div>
+                <div className={styles.Content}>
+                    <Link to="/lab/CountPage">
+                        <h2>Count 100</h2>
+                    </Link>
+                </div>
+                <div className={styles.Content}>
+                    <Link to="/lab/manyAnimationPage">
+                        <h2>Many Animation</h2>
+                    </Link>
+                </div>
             </div>
         </div>
     );
