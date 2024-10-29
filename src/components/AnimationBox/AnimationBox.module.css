@@ -433,8 +433,10 @@
  }
 
  .Container[class*="3D"] {
-    perspective: 1000px;
+    perspective: 2000px;
     perspective-origin: center center;
+    transform-style: preserve-3d;
+    will-change: transform;
 }
 
 /* 3D カード回転 */
@@ -451,10 +453,15 @@
 .cardFlip3D .Box:nth-child(4) { animation-delay: 0.6s; }
 
 /* 3D ヘリカル回転 */
-.helical3D .Box {
-    animation: helical3D 1.5s ease-out forwards;
+.smoothHelical3D .Box {
+    animation: smoothHelical3D 1.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
     transform-style: preserve-3d;
     opacity: 0;
+    /* Safari用のGPUアクセラレーション促進 */
+    -webkit-transform-style: preserve-3d;
+    -webkit-backface-visibility: hidden;
+    -webkit-perspective: 1000px;
+    will-change: transform, opacity;
 }
 
 .helical3D .Box:nth-child(1) { animation-delay: 0s; }
@@ -655,5 +662,161 @@
             rotateY(0deg) 
             rotateZ(0deg) 
             scale3d(1, 1, 1);
+    }
+}
+
+
+/* 新しい滑らかな3Dアニメーション */
+.smoothFlip3D .Box {
+    animation: smoothFlip3D 1.2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    transform-style: preserve-3d;
+    opacity: 0;
+    will-change: transform, opacity;
+}
+
+.floatRotate3D .Box {
+    animation: floatRotate3D 1.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    transform-style: preserve-3d;
+    opacity: 0;
+    will-change: transform, opacity;
+}
+
+.sideSwing3D .Box {
+    animation: sideSwing3D 1.3s cubic-bezier(0.68, -0.6, 0.32, 1.6) forwards;
+    transform-style: preserve-3d;
+    opacity: 0;
+    will-change: transform, opacity;
+}
+
+/* ディレイの設定 */
+[class*="3D"] .Box:nth-child(1) { animation-delay: 0s; }
+[class*="3D"] .Box:nth-child(2) { animation-delay: 0.15s; }
+[class*="3D"] .Box:nth-child(3) { animation-delay: 0.3s; }
+[class*="3D"] .Box:nth-child(4) { animation-delay: 0.45s; }
+
+@keyframes smoothHelical3D {
+    0% {
+        opacity: 0;
+        transform: 
+            translateZ(-300px) 
+            rotateX(45deg) 
+            rotateY(45deg);
+    }
+    100% {
+        opacity: 1;
+        transform: 
+            translateZ(0) 
+            rotateX(0deg) 
+            rotateY(0deg);
+    }
+}
+
+@keyframes smoothFlip3D {
+    0% {
+        opacity: 0;
+        transform: 
+            translateZ(-100px) 
+            rotateY(-90deg);
+    }
+    100% {
+        opacity: 1;
+        transform: 
+            translateZ(0) 
+            rotateY(0deg);
+    }
+}
+
+@keyframes floatRotate3D {
+    0% {
+        opacity: 0;
+        transform: 
+            translateY(100px) 
+            translateZ(-100px) 
+            rotateX(30deg);
+    }
+    50% {
+        opacity: 0.8;
+        transform: 
+            translateY(-20px) 
+            translateZ(50px) 
+            rotateX(-10deg);
+    }
+    100% {
+        opacity: 1;
+        transform: 
+            translateY(0) 
+            translateZ(0) 
+            rotateX(0deg);
+    }
+}
+
+@keyframes sideSwing3D {
+    0% {
+        opacity: 0;
+        transform: 
+            translateX(-200px) 
+            rotateY(-60deg) 
+            translateZ(-100px);
+    }
+    60% {
+        opacity: 1;
+        transform: 
+            translateX(30px) 
+            rotateY(20deg) 
+            translateZ(50px);
+    }
+    100% {
+        opacity: 1;
+        transform: 
+            translateX(0) 
+            rotateY(0) 
+            translateZ(0);
+    }
+}
+
+/* より滑らかな浮遊効果のアニメーション */
+.float3D .Box {
+    animation: float3D 2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+    transform-style: preserve-3d;
+    will-change: transform;
+}
+
+@keyframes float3D {
+    0% {
+        transform: 
+            translateY(0) 
+            translateZ(0) 
+            rotateX(0deg);
+    }
+    50% {
+        transform: 
+            translateY(-20px) 
+            translateZ(20px) 
+            rotateX(5deg);
+    }
+    100% {
+        transform: 
+            translateY(0) 
+            translateZ(0) 
+            rotateX(0deg);
+    }
+}
+
+/* よりスムーズな回転アニメーション */
+.smoothRotate3D .Box {
+    animation: smoothRotate3D 1.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    transform-style: preserve-3d;
+    opacity: 0;
+    will-change: transform, opacity;
+}
+
+@keyframes smoothRotate3D {
+    0% {
+        opacity: 0;
+        transform: rotateY(90deg) translateZ(-100px);
+    }
+    100% {
+        opacity: 1;
+        transform: rotateY(0deg) translateZ(0);
     }
 }

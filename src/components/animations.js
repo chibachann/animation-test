@@ -119,6 +119,36 @@ export const animations = [
       type: "rubiksCube3D",
       title: "3D Rubik's Cube",
       description: "ルービックキューブのような複雑な3D回転"
+    },
+    {
+      type: "smoothHelical3D",
+      title: "Smooth Helical 3D",
+      description: "滑らかな螺旋状の3D回転"
+    },
+    {
+      type: "smoothFlip3D",
+      title: "Smooth Flip 3D",
+      description: "滑らかなフリップ効果"
+    },
+    {
+      type: "floatRotate3D",
+      title: "Float Rotate 3D",
+      description: "浮遊しながら回転"
+    },
+    {
+      type: "sideSwing3D",
+      title: "Side Swing 3D",
+      description: "横からスイングする3D効果"
+    },
+    {
+      type: "float3D",
+      title: "Float 3D",
+      description: "永続的な浮遊効果"
+    },
+    {
+      type: "smoothRotate3D",
+      title: "Smooth Rotate 3D",
+      description: "滑らかな回転効果"
     }
   ];
   
