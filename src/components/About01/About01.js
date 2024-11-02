@@ -21,7 +21,7 @@ const About01 = () => {
                         </AnimatedElement>
                     </div>
                     
-                    <AnimatedElement animationClass="slideInBottom">
+                    <AnimatedElement animationClass="slideInTop">
                     <h2 className={styles.AboutSubTitle}>
                         Design <br/>
                         of your SToRy
@@ -30,7 +30,7 @@ const About01 = () => {
 
                     <div className={styles.AboutText}>
                         <p>
-                            <AnimatedElement animationClass="slideInBottom">
+                            <AnimatedElement animationClass="smoothRotate3D">
                             SToRy Web Solutionsは、Webサイト制作を中心に、Webマーケティング、
                             コンテンツ制作など、
                             お客様のビジネスをトータルでサポートする会社です。

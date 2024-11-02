@@ -15,19 +15,30 @@
     opacity: 1;
     transform: translateY(300);
   }
-  
-  /* 必要に応じて他のアニメーションクラスを追加 */
-
-  .rotate {
-    opacity: 1;
-    transform: scale3d(1.1, 1.1, 1.1);
-  }
 
   .slideInBottom {
     opacity: 0;
     transform: translateY(20%);
     animation: slideInBottom 1s ease-out forwards;
   }
+
+  .smoothRotate3D {
+    animation: smoothRotate3D 1.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    transform-style: preserve-3d;
+    opacity: 0;
+    will-change: transform, opacity;
+}
+
+  @keyframes smoothRotate3D {
+    0% {
+        opacity: 0;
+        transform: rotateY(90deg) translateZ(-100px);
+    }
+    100% {
+        opacity: 1;
+        transform: rotateY(0deg) translateZ(0);
+    }
+}
 
   @keyframes slideInBottom {
     0% {
