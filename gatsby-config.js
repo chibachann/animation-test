@@ -2,7 +2,6 @@ module.exports = {
     siteMetadata: {
         title: 'animation-test',
         description: "anime test",
-        siteUrl: "https://main.d1rx47vmsl7fry.amplifyapp.com",
         author: "chiba",
         lang: "ja",
     },
