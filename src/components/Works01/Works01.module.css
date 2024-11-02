@@ -1,6 +1,6 @@
 .Works01 {
     display: grid;
-    height: 110vh;
+    height: 150vh;
     grid-template-columns: 1fr;
     grid-template-rows: 1fr;
     justify-items: center;
@@ -11,7 +11,7 @@
     grid-column: 1/-1;
     grid-row: 1/-1;
     width: 100%;
-    height: 110vh;
+    height: 150vh;
 }
 
 .Works {
@@ -23,7 +23,7 @@
 }
 
 .WorksContent {
-    height: 110vh;
+    height: 150vh;
     width: 100%;
     display: grid;
     grid-auto-rows: min-content;
@@ -88,4 +88,21 @@
 .WorksDescriptionTitle span {
     font-size: 1.2rem;
     font-weight: 400;
+}
+
+.WorksDescriptionContent {
+    display: grid;
+    width: 80vw;
+    border-bottom: 1px solid white;
+}
+
+.WorksDescriptionContent span {
+    font-size: 1.5rem;
+    padding-left: 10px;
+}
+
+.WorksDescriptionContent p {
+    margin: 5vw 0;
+    font-size: 1.3rem;
+    padding-left: 10vw;
 }
