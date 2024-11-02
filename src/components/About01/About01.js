@@ -10,13 +10,13 @@ const About01 = () => {
                 <div className={styles.AboutContent}>
                     <div className={styles.AboutTitle}>
                         <h1>
-                            <AnimatedElement animationClass="slideInBottom">
+                            <AnimatedElement>
                                 About 
                                 SToRy <br/>
                                 web sollutions
                             </AnimatedElement>
                         </h1>
-                        <AnimatedElement animationClass="slideInBottom">
+                        <AnimatedElement >
                             <img src="/About/icon.png" alt="icon" />
                         </AnimatedElement>
                     </div>
