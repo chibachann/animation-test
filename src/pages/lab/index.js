@@ -1,12 +1,12 @@
 import * as React from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
-import Layout from '../components/layout';
-import Index from '../components/index.js';
+import Layout from '../../components/layout';
+import Page01 from '../../components/Page01/Page01';
 
 const IndexPage = () => {
     return (
       <Layout>
-        <Index />
+        <Page01 />
       </Layout>
     );
   };
