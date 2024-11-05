@@ -1,0 +1,47 @@
+.about {
+    display: grid;
+    grid-auto-rows: min-content;
+    background-color: #F2F2F2;
+    color: #191919;
+}
+
+.aboutcontent {
+    display: grid;
+    grid-template-columns: 70vw 30vw;
+    grid-template-rows: 1fr;
+    height: 100vh;
+    align-items: center;
+}
+
+.aboutTitle {
+    grid-column: 1/2;
+    grid-row: 1/2;
+    
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-auto-rows: min-content;
+    padding: 0 20px;
+}
+
+
+.aboutTitle h2 {
+    font-size: 2.2rem;
+    font-weight: 400;
+    line-height: 1.1;
+    grid-column: 1/-1;
+}
+
+.aboutTitle img {
+    margin-top: 20px;
+    width: 80px;
+    height: auto;
+    object-fit: contain;
+    grid-column: 1/-1;
+}
+
+.aboutText {
+    display: grid;
+    grid-template-rows: 1fr;
+    align-items: center;
+    font-size: 0.9rem;
+}
